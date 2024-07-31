@@ -10,12 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('folgas', function (Blueprint $table) {
+        Schema::create('importacoes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('funcionario_id')
-                ->constrained('funcionarios')
-                ->onDelete('cascade');
-            $table->dateTime('data');
+            $table->string('arquivo');
+            $table->boolean('processado')->default(false)->nullable();
+            $table->dateTime('processado_em')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('folgas');
+        Schema::dropIfExists('arquivos');
     }
 };

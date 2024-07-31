@@ -12,10 +12,11 @@ return new class extends Migration {
     {
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->id();
-            $table->string('matricula');
+            $table->integer('matricula');
             $table->string('nome');
-            $table->string('filial');
+            $table->integer('filial');
             $table->integer('ciclo');
+            $table->date('ultima_folga');
             $table->timestamps();
         });
     }
