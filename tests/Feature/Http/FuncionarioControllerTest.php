@@ -1,13 +1,8 @@
 <?php
 
 use App\Domain\Funcionario\Models\Funcionario;
-use App\Domain\Importacao\Jobs\ProcessarImportacaoJob;
-use App\Domain\Importacao\Models\Importacao;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Queue;
-use Illuminate\Support\Facades\Storage;
 
 uses(RefreshDatabase::class);
 
