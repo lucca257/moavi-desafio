@@ -9,7 +9,7 @@ class CreateImportValidator extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => ['required', 'mimes:csv']
+            'file' => ['required', 'file', 'mimes:csv,txt']
         ];
     }
 }

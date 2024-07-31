@@ -5,12 +5,12 @@ namespace App\Domain\Importacao\Jobs;
 use App\Domain\Funcionario\DTOs\FuncionarioDto;
 use App\Domain\Funcionario\Models\Funcionario;
 use App\Domain\Importacao\Models\Importacao;
-use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use League\Csv\Reader;
 
@@ -55,7 +55,7 @@ class ProcessarImportacaoJob implements ShouldQueue
                 $data['nome'],
                 $data['ciclo'],
                 $data['filial_codigo'],
-                $data['ultima_folga'],
+                Carbon::createFromFormat('d/m/Y', $data['ultima_folga'])->format('Y-m-d'),
             );
 
             Funcionario::updateOrCreate(
