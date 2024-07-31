@@ -9,9 +9,9 @@ class IndexFolgaValidator extends FormRequest
     public function rules(): array
     {
         return [
-            'ano' => ['required'],
-            'mes' => ['required'],
-            'filial' => ['required'], //validate filial id
+            'ano' => ['required', 'numeric'],
+            'mes' => ['required', 'numeric'],
+            'filial' => ['required', 'exists:funcionarios,filial'],
         ];
     }
 }

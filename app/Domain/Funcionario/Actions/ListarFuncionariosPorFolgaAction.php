@@ -12,31 +12,38 @@ class ListarFuncionariosPorFolgaAction
 {
     public function execute(ListarUsuariosPorFolgaDto $dto)
     {
-        /**
-         * Buscar todos os funcionários da filial
-         * Separar em grupos de quem vai trabalhar e folgar
-         *
-         */
-
-        $funcionarios = Funcionario::with('folgas')
-            ->where('filial', $dto->filial)
-            ->get();
-
-
         $domingos = $this->obterDomingos($dto->ano, $dto->mes);
+
+        return Funcionario::where('filial', $dto->filial)
+            ->get()
+            ->map(function ($item) use ($domingos) {
+                $diasTrabalhados = 0;
+                $item->domingos = $domingos->mapWithKeys(function ($data) use ($item, &$diasTrabalhados) {
+                    if ($item->ciclo === 0 || $diasTrabalhados == $item->ciclo) {
+                        $diasTrabalhados = 0;
+                        return [$data => 'folga'];
+                    }
+
+                    $diasTrabalhados++;
+                    return [$data => 'trabalho'];
+                });
+
+                return $item;
+            });
     }
 
     private function obterDomingos(string $ano, string $mes): Collection
     {
-        $inicioMes = Carbon::create($ano, $mes);
+        $inicioMes = Carbon::create($ano, $mes, 1);
         $fimMes = $inicioMes->copy()->endOfMonth();
+
         $periodo = CarbonPeriod::create($inicioMes, $fimMes);
 
         $domingos = collect();
 
-        foreach ($domingos as $data) {
+        foreach ($periodo as $data) {
             if ($data->isSunday()) {
-                $domingos->push($data->format('d-m-Y'));
+                $domingos->push($data->format('d/m/Y'));
             }
         }
 
