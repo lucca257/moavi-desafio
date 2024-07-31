@@ -2,15 +2,15 @@
 
 namespace Database\Factories;
 
-use App\Domain\Funcionario\Models\Folga;
+use App\Domain\Importacao\Models\Importacao;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Folga>
+ * @extends Factory<Importacao>
  */
-class FolgaFactory extends Factory
+class ImportacaoFactory extends Factory
 {
-    protected $model = Folga::class;
+    protected $model = Importacao::class;
 
     /**
      * Define the model's default state.
@@ -20,7 +20,8 @@ class FolgaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'arquivo' => $this->faker->name,
+            'processado' => $this->faker->boolean()
         ];
     }
 }

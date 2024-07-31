@@ -1,6 +1,7 @@
 <?php
 
-use App\Applications\Web\Post\PostWebController;
+use App\Infrastructure\Http\Controllers\ImportController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [PostWebController::class, 'index']);
+Route::get('/', function () {
+});

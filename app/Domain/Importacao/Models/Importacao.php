@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Domain\Funcionario\Models;
+namespace App\Domain\Importacao\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Funcionario extends Model
+class Importacao extends Model
 {
     use HasFactory;
 
+    protected $table = 'importacoes';
     protected $guarded = [];
 }
