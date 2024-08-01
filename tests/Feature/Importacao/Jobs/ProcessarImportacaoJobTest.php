@@ -28,7 +28,7 @@ it('should process data from csv file', function () {
         'nome' => 'Lívia',
         'filial' => 3,
         'ciclo' => 2,
-        'ultima_folga' => '30/06/2024'
+        'ultima_folga' => '2024-06-30'
     ]);
 
     $this->assertDatabaseHas('funcionarios', [
@@ -36,7 +36,7 @@ it('should process data from csv file', function () {
         'nome' => 'Cecília',
         'filial' => 1,
         'ciclo' => 2,
-        'ultima_folga' => '21/07/2024'
+        'ultima_folga' => '2024-07-21'
     ]);
 
     $importacao->refresh();
