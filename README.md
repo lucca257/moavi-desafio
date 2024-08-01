@@ -1,5 +1,3 @@
-## Important
-
 ## Desenvolvido em:
 
 [Laravel](https://laravel.com/docs/11.x) (11)
@@ -7,12 +5,12 @@
 ## Tecnologias:
 
 1. [PHP](https://www.php.net/) (8.3)
-2. [MySQL](https://www.mysql.com) (8)
+2. [MySQL](https://www.mysql.com) (9)
 3. [Composer](https://getcomposer.org/) (2.1)
 
-### Instructions for installing the project:
+### Para rodar o projeto:
 
-this project is dockerized, to start the project just run the command below with docker:
+Projeto dockerizado, rode os comandos abaixo para o projeto funcionar:
 
 ```sh
 docker-compose up
@@ -26,19 +24,17 @@ docker exec -it backend sh -c "php artisan test"
 
 # Observações
 
-Por padrão, o Laravel implementa a arquitetura MVC. Implementei arquitetura DDD seguindo princípios sólidos
-arquitetura, usando ações, repositórios e injeção de dependência.
+Por padrão, o Laravel implementa a arquitetura MVC. Implementei arquitetura DDD seguindo princípios do SOLID,
+usando actions, repositórios e injeção de dependência.
 
 # O que faria de melhor?
 
-Usaria um framework reativo no frontend, desacoplado do backend, visando facilitar a manutenção do projeto. Escolho o
+Neste projeto utilizei o VueJS pelo CDN, mas em projetos maiores usario o vue desacoplado do backend, visando facilitar
+a manutenção do projeto. Escolho o
 Nuxt.js, um framework baseado em Vue.js, devido às suas robustas funcionalidades para otimização de SEO e renderização
 eficiente no servidor.
 
-No backend, implementei o cache padrão oferecido pelo Laravel utilizando banco de dados. Contudo, para lidar com grandes
-volumes de dados, recomenda-se o uso de uma ferramenta dedicada como Redis. Isso proporciona melhor desempenho ao
-consultar dados no banco.
+Poderia ter utilizado camadas de caching para listagem de folgas do funcionário, isso traria um bom tempo de resposta e
+menos processamento do banco e dos servidores.
 
-Para uma aplicação com alto volume de usuários, um aplicativo móvel integrado, e estrutura complexa com funcionalidades
-como comentários e avaliações, considero vantajoso adotar GraphQL. Essa tecnologia facilita consultas flexíveis e
-eficientes, além de suportar as necessidades dinâmicas de uma aplicação escalável.
+Algumas regras mais complexos para a folga podem ser criadas, então isolar isso pode fazer sentido também.
