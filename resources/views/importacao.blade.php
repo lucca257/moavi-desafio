@@ -7,7 +7,7 @@
         <h3>Importar funcionários</h3>
         <div class="mb-3">
             <label for="file" class="form-label">Arquivo</label>
-            <input class="form-control" type="file" id="file" @change="onFileChange" required>
+            <input class="form-control" type="file" id="file" accept=".text,.csv,." @change="onFileChange" required>
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
